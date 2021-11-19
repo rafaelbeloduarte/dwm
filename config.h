@@ -61,7 +61,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "alacritty", NULL };
+static const char *termcmd[]  = { "st", NULL };
 static const char *firefox[]  = { "firefox", NULL };
 static const char *keepassxccmd[]  = { "keepassxc", NULL };
 
@@ -106,9 +106,9 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_e,      quit,           {0} },
-	{ 0,                            XK_F11,    spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%;      kill -44 $(pidof slstatus); slstatus &")},
-	{ 0,                            XK_F10,    spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%;      kill -44 $(pidof slstatus); slstatus &")},
-	{ MODKEY,                       XK_F4,     spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle;  kill -44 $(pidof slstatus); slstatus &")},
+	{ 0,                            XK_F11,    spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%;  kill -44 $(pidof slstatus); slstatus &")},
+	{ 0,                            XK_F10,    spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%;  kill -44 $(pidof slstatus); slstatus &")},
+	{ MODKEY,                       XK_F4,     spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle; kill -44 $(pidof slstatus); slstatus &")},
 };
 
 /* button definitions */
