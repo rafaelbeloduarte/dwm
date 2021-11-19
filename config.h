@@ -106,9 +106,9 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_e,      quit,           {0} },
-	{ 0,                            XK_F11,    spawn,          SHCMD("amixer set Master 3+ ; slstatus &") },
-	{ 0,                            XK_F10,    spawn,          SHCMD("amixer set Master 3- ; slstatus &") },
-	{ 0,                            XK_F4,     spawn,          SHCMD("amixer set Master toggle ; slstatus &") },
+	{ 0,                            XK_F11,    spawn,          SHCMD("amixer set Master 3+;      kill -44 $(pidof slstatus); slstatus &")},
+	{ 0,                            XK_F10,    spawn,          SHCMD("amixer set Master 3-;      kill -44 $(pidof slstatus); slstatus &")},
+	{ 0,                            XK_F4,     spawn,          SHCMD("amixer set Master toggle;  kill -44 $(pidof slstatus); slstatus &")},
 };
 
 /* button definitions */
