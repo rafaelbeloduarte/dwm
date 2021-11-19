@@ -1,4 +1,5 @@
 /* See LICENSE file for copyright and license details. */
+#include <X11/XF86keysym.h>
 
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
@@ -27,10 +28,16 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class           instance    title       tags mask     switchtotag    isfloating   monitor */
-	{ "Gimp",          NULL,       NULL,       0,            0,             1,           -1 },
-	{ "Firefox",       NULL,       NULL,       1 << 8,       0,             0,           -1 },
-	{ "Audacious",     NULL,       NULL,       1 << 3,       1,             0,           -1 },
+	/* class           instance    title             tags mask     switchtotag    isfloating   monitor */
+	{ "Gimp",          NULL,       NULL,             0,            0,             1,           -1 },
+	{ "Firefox",       NULL,       NULL,             1 << 8,       0,             0,           -1 },
+	{ "Audacious",     NULL,       NULL,             1 << 3,       0,             0,           -1 },
+	{ "Google-chrome", NULL,       NULL,             1 << 2,       1,             0,           -1 },
+	{ "Steam",         NULL,       NULL,             1 << 6,       1,             0,           -1 },
+	{ "mpv",           NULL,       NULL,             1 << 8,       1,             1,           -1 },
+	{ NULL,            NULL,       "Friends List",   1 << 6,       1,             1,           -1 },
+	{ NULL,            NULL,       "BashTOP",        1 << 8,       1,             1,           -1 },
+	{ NULL,            NULL,       "mutt",           1 << 8,       1,             1,           -1 },
 };
 
 /* layout(s) */
@@ -61,57 +68,66 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "alacritty", NULL };
 
 static Key keys[] = {
-	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
-	{ MODKEY,		        XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },			// move window to master
-	{ MODKEY,                       XK_Tab,    view,           {0} },			// move back to last used tag
-	{ MODKEY,             		XK_q,      killclient,     {0} },
-	{ MODKEY,                       XK_e,      setlayout,      {.v = &layouts[0]} },	// tiling layout
-	{ MODKEY|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[1]} },	// floating layout
-	{ MODKEY,                       XK_w,      setlayout,      {.v = &layouts[2]} },	// monocle layout (windowed)
-	// { MODKEY,                       XK_space,  setlayout,      {0} },
-	{ ALTKEY,		        XK_space,  togglefloating, {0} },
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },		// show all tags
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },		// pin window to all tags, use pin to specific tag to unpin from all
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },		// focusmon is used to focus monitor
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY,                       XK_minus,  setgaps,        {.i = -5 } },
-	{ MODKEY,                       XK_equal,  setgaps,        {.i = +5 } },
-	{ MODKEY|ShiftMask,             XK_minus,  setgaps,        {.i = GAP_RESET } },
-	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = GAP_TOGGLE} },
-	TAGKEYS(                        XK_1,                      0)
-	TAGKEYS(                        XK_2,                      1)
-	TAGKEYS(                        XK_3,                      2)
-	TAGKEYS(                        XK_4,                      3)
-	TAGKEYS(                        XK_5,                      4)
-	TAGKEYS(                        XK_6,                      5)
-	TAGKEYS(                        XK_7,                      6)
-	TAGKEYS(                        XK_8,                      7)
-	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_e,      quit,           {0} },
-	{ 0,                            XK_F11,    spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%;  kill -44 $(pidof slstatus); slstatus &")},
-	{ 0,                            XK_F10,    spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%;  kill -44 $(pidof slstatus); slstatus &")},
-	{ MODKEY,                       XK_F4,     spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle; kill -44 $(pidof slstatus); slstatus &")},
-	{ ALTKEY,		        XK_e, 	   spawn,          SHCMD("keepassxc") },
-	{ ALTKEY,		        XK_f, 	   spawn,          SHCMD("firefox") },
-	{ ALTKEY,                       XK_a,      spawn,          SHCMD("pcmanfm")},
-	{ ALTKEY,                       XK_d,      spawn,          SHCMD("st -e mutt")},
-	{ ALTKEY,                       XK_s,      spawn,          SHCMD("steam")},
-	{ ALTKEY,                       XK_y,      spawn,          SHCMD("freetube")},
-	{ 0,                       XK_F7,     spawn,          SHCMD("audacious -t")},
+	/* modifier           key                function        argument */
+	{ MODKEY,             XK_space,          spawn,          {.v = dmenucmd } },
+	{ MODKEY,		          XK_Return,         spawn,          {.v = termcmd } },
+	{ MODKEY,             XK_p,              togglebar,      {0} },
+	{ MODKEY,             XK_j,              focusstack,     {.i = +1 } },
+	{ MODKEY,             XK_k,              focusstack,     {.i = -1 } },
+	{ MODKEY,             XK_i,              incnmaster,     {.i = +1 } },
+	{ MODKEY,             XK_d,              incnmaster,     {.i = -1 } },
+	{ MODKEY,             XK_h,              setmfact,       {.f = -0.05} },
+	{ MODKEY,             XK_l,              setmfact,       {.f = +0.05} },
+	{ MODKEY,             XK_z,              zoom,           {0} },			// move window to master
+	{ MODKEY,             XK_Tab,            view,           {0} },			// move back to last used tag
+	{ MODKEY,             XK_q,              killclient,     {0} },
+	{ MODKEY,             XK_e,              setlayout,      {.v = &layouts[0]} },	// tiling layout
+	{ MODKEY|ShiftMask,   XK_f,              setlayout,      {.v = &layouts[1]} },	// floating layout
+	{ MODKEY,             XK_w,              setlayout,      {.v = &layouts[2]} },	// monocle layout (windowed)
+	// { MODKEY,           XK_space,          setlayout,      {0} },
+	{ ALTKEY,		          XK_space,          togglefloating, {0} },
+	{ MODKEY,             XK_0,              view,           {.ui = ~0 } },		// show all tags
+	{ MODKEY|ShiftMask,   XK_0,              tag,            {.ui = ~0 } },		// pin window to all tags, use pin to specific tag to unpin from all
+	{ MODKEY,             XK_comma,          focusmon,       {.i = -1 } },		// focusmon is used to focus monitor
+	{ MODKEY,             XK_period,         focusmon,       {.i = +1 } },
+	{ MODKEY|ShiftMask,   XK_comma,          tagmon,         {.i = -1 } },
+	{ MODKEY|ShiftMask,   XK_period,         tagmon,         {.i = +1 } },
+	{ MODKEY,             XK_minus,          setgaps,        {.i = -5 } },
+	{ MODKEY,             XK_equal,          setgaps,        {.i = +5 } },
+	{ MODKEY|ShiftMask,   XK_minus,          setgaps,        {.i = GAP_RESET } },
+	{ MODKEY|ShiftMask,   XK_equal,          setgaps,        {.i = GAP_TOGGLE} },
+	TAGKEYS(              XK_1,                              0)
+	TAGKEYS(              XK_2,                              1)
+	TAGKEYS(              XK_3,                              2)
+	TAGKEYS(              XK_4,                              3)
+	TAGKEYS(              XK_5,                              4)
+	TAGKEYS(              XK_6,                              5)
+	TAGKEYS(              XK_7,                              6)
+	TAGKEYS(              XK_8,                              7)
+	TAGKEYS(              XK_9,                              8)
+	{ MODKEY|ShiftMask,   XK_e,              quit,           {0} },
+	{ 0,                  XK_F11,            spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%;  kill -44 $(pidof slstatus); slstatus &")},
+	{ 0,                  XK_F10,            spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%;  kill -44 $(pidof slstatus); slstatus &")},
+	{ MODKEY,             XK_F4,             spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle; kill -44 $(pidof slstatus); slstatus &")},
+	{ MODKEY,		          XK_b, 	           spawn,          SHCMD("setxkbmap -layout br;  kill -44 $(pidof slstatus); slstatus &") },
+	{ MODKEY,		          XK_u, 	           spawn,          SHCMD("setxkbmap -layout us;  kill -44 $(pidof slstatus); slstatus &") },
+	{ ALTKEY,		          XK_e, 	           spawn,          SHCMD("keepassxc") },
+	{ ALTKEY,		          XK_f, 	           spawn,          SHCMD("chromium") },
+	{ ALTKEY,		          XK_c, 	           spawn,          SHCMD("google-chrome-stable") },
+	{ ALTKEY,             XK_a,              spawn,          SHCMD("pcmanfm")},
+	{ ControlMask,        XK_space,          spawn,          SHCMD("alacritty -e ranger")},
+	{ ALTKEY,             XK_m,              spawn,          SHCMD("alacritty -e bashtop")},
+	{ ALTKEY,             XK_d,              spawn,          SHCMD("alacritty -t mutt -e mutt")},
+	{ ALTKEY,             XK_s,              spawn,          SHCMD("steam")},
+	{ ALTKEY,             XK_y,              spawn,          SHCMD("freetube")},
+	{ ALTKEY,             XK_p,              spawn,          SHCMD("nitrogen --set-zoom-fill --random ~/.local/share/backgrounds/")},
+	{ 0,                  XK_F7,             spawn,          SHCMD("audacious -t")},
+	{ 0,                  XF86XK_AudioPrev,  spawn,          SHCMD("audacious -r")},
+	{ 0,                  XF86XK_AudioNext,  spawn,          SHCMD("audacious -f")},
+	{ ALTKEY|ShiftMask,   XK_f,              spawn,          SHCMD("chromium --proxy-server=\"proxy.uem.br:8080\"")},
 };
 
 /* button definitions */
