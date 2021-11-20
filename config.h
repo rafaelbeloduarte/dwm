@@ -109,11 +109,11 @@ static Key keys[] = {
 	TAGKEYS(              XK_8,                              7)
 	TAGKEYS(              XK_9,                              8)
 	{ MODKEY|ShiftMask,   XK_e,              quit,           {0} },
-	{ 0,                  XK_F11,            spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%;  kill -1 $(pidof slstatus); slstatus &")},
-	{ 0,                  XK_F10,            spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%;  kill -1 $(pidof slstatus); slstatus &")},
-	{ MODKEY,             XK_F4,             spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle; kill -1 $(pidof slstatus); slstatus &")},
-	{ MODKEY,		          XK_b, 	           spawn,          SHCMD("setxkbmap -layout br;  kill -1 $(pidof slstatus); slstatus &") },
-	{ MODKEY,		          XK_u, 	           spawn,          SHCMD("setxkbmap -layout us;  kill -1 $(pidof slstatus); slstatus &") },
+	{ 0,                  XK_F11,            spawn,          SHCMD("amixer set Master 5%+")},
+	{ 0,                  XK_F10,            spawn,          SHCMD("amixer set Master 5%-")},
+	{ MODKEY,             XK_F4,             spawn,          SHCMD("amixer set Master toggle")},
+	{ MODKEY,		          XK_b, 	           spawn,          SHCMD("setxkbmap -layout br") },
+	{ MODKEY,		          XK_u, 	           spawn,          SHCMD("setxkbmap -layout us") },
 	{ ALTKEY,		          XK_e, 	           spawn,          SHCMD("keepassxc") },
 	{ ALTKEY,		          XK_f, 	           spawn,          SHCMD("firefox") },
 	{ ALTKEY,		          XK_b, 	           spawn,          SHCMD("qutebrowser") },
