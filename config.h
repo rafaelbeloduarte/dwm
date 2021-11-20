@@ -7,8 +7,8 @@ static const Gap default_gap        = {.isgap = 1, .realgap = 5, .gappx = 5};
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=12" };
-static const char dmenufont[]       = "monospace:size=12";
+static const char *fonts[]          = { "monospace:size=14" };
+static const char dmenufont[]       = "monospace:size=14";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -34,10 +34,10 @@ static const Rule rules[] = {
 	{ "Audacious",     NULL,       NULL,             1 << 3,       1,             0,           -1 },
 	{ "Google-chrome", NULL,       NULL,             1 << 2,       1,             0,           -1 },
 	{ "Steam",         NULL,       NULL,             1 << 6,       1,             0,           -1 },
-	{ "mpv",           NULL,       NULL,             1 << 8,       1,             1,           -1 },
+	{ "mpv",           NULL,       NULL,             1 << 8,       0,             1,           -1 },
 	{ NULL,            NULL,       "Friends List",   1 << 6,       1,             1,           -1 },
-	{ NULL,            NULL,       "BashTOP",        1 << 8,       1,             1,           -1 },
-	{ NULL,            NULL,       "mutt",           1 << 8,       1,             1,           -1 },
+	{ NULL,            NULL,       "BashTOP",        1 << 8,       0,             1,           -1 },
+	{ NULL,            NULL,       "mutt",           1 << 8,       0,             1,           -1 },
 };
 
 /* layout(s) */
@@ -114,7 +114,7 @@ static Key keys[] = {
 	{ MODKEY,             XK_F4,             spawn,          SHCMD("amixer set Master toggle")},
 	{ MODKEY,		          XK_b, 	           spawn,          SHCMD("setxkbmap -layout br") },
 	{ MODKEY,		          XK_u, 	           spawn,          SHCMD("setxkbmap -layout us") },
-	{ MODKEY,		          XK_l, 	           spawn,          SHCMD("sleep 1 && xset s activate && slock") },
+	{ ALTKEY,		          XK_l, 	           spawn,          SHCMD("sleep 1 && xset s activate && slock") },
 	{ ALTKEY,		          XK_e, 	           spawn,          SHCMD("keepassxc") },
 	{ ALTKEY,		          XK_f, 	           spawn,          SHCMD("firefox") },
 	{ ALTKEY,		          XK_b, 	           spawn,          SHCMD("qutebrowser") },
