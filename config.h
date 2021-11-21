@@ -1,5 +1,6 @@
 /* See LICENSE file for copyright and license details. */
 #include <X11/XF86keysym.h>
+#include "gaplessgrid.c"
 
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
@@ -51,6 +52,7 @@ static const Layout layouts[] = {
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
+	{ "###",      gaplessgrid },
 };
 
 /* key definitions */
@@ -87,6 +89,7 @@ static Key keys[] = {
 	{ MODKEY,             XK_e,              setlayout,      {.v = &layouts[0]} },	// tiling layout
 	{ MODKEY|ShiftMask,   XK_f,              setlayout,      {.v = &layouts[1]} },	// floating layout
 	{ MODKEY,             XK_w,              setlayout,      {.v = &layouts[2]} },	// monocle layout (windowed)
+	{ MODKEY,             XK_g,              setlayout,      {.v = &layouts[3] } },
 	// { MODKEY,           XK_space,          setlayout,      {0} },
 	{ ALTKEY,		          XK_space,          togglefloating, {0} },
 	{ MODKEY,             XK_0,              view,           {.ui = ~0 } },		// show all tags
@@ -112,13 +115,13 @@ static Key keys[] = {
 	{ 0,                  XK_F11,            spawn,          SHCMD("amixer set Master 5%+")},
 	{ 0,                  XK_F10,            spawn,          SHCMD("amixer set Master 5%-")},
 	{ MODKEY,             XK_F4,             spawn,          SHCMD("amixer set Master toggle")},
-	{ MODKEY,		          XK_b, 	           spawn,          SHCMD("setxkbmap -layout br") },
-	{ MODKEY,		          XK_u, 	           spawn,          SHCMD("setxkbmap -layout us") },
-	{ ALTKEY,		          XK_l, 	           spawn,          SHCMD("sleep 1 && xset s activate && slock") },
-	{ ALTKEY,		          XK_e, 	           spawn,          SHCMD("keepassxc") },
-	{ ALTKEY,		          XK_f, 	           spawn,          SHCMD("firefox") },
-	{ ALTKEY,		          XK_b, 	           spawn,          SHCMD("qutebrowser") },
-	{ ALTKEY,		          XK_c, 	           spawn,          SHCMD("google-chrome-stable") },
+	{ MODKEY,             XK_b,              spawn,          SHCMD("setxkbmap -layout br") },
+	{ MODKEY,             XK_u,              spawn,          SHCMD("setxkbmap -layout us") },
+	{ ALTKEY,             XK_l,              spawn,          SHCMD("sleep 1 && xset s activate && slock") },
+	{ ALTKEY,             XK_e,              spawn,          SHCMD("keepassxc") },
+	{ ALTKEY,             XK_f,              spawn,          SHCMD("firefox") },
+	{ ALTKEY,             XK_b,              spawn,          SHCMD("qutebrowser") },
+	{ ALTKEY,             XK_c,              spawn,          SHCMD("google-chrome-stable") },
 	{ ALTKEY,             XK_a,              spawn,          SHCMD("pcmanfm")},
 	{ ControlMask,        XK_space,          spawn,          SHCMD("alacritty -e ranger")},
 	{ ALTKEY,             XK_m,              spawn,          SHCMD("alacritty -e bashtop")},
