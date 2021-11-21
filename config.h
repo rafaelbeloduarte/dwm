@@ -72,10 +72,11 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 
+#include "movestack.c"
 static Key keys[] = {
 	/* modifier           key                function        argument */
 	{ MODKEY,             XK_space,          spawn,          {.v = dmenucmd } },
-	{ MODKEY,		          XK_Return,         spawn,          {.v = termcmd } },
+	{ MODKEY,             XK_Return,         spawn,          {.v = termcmd } },
 	{ MODKEY,             XK_p,              togglebar,      {0} },
 	{ MODKEY,             XK_j,              focusstack,     {.i = +1 } },
 	{ MODKEY,             XK_k,              focusstack,     {.i = -1 } },
@@ -83,6 +84,8 @@ static Key keys[] = {
 	{ MODKEY,             XK_d,              incnmaster,     {.i = -1 } },
 	{ MODKEY,             XK_h,              setmfact,       {.f = -0.05} },
 	{ MODKEY,             XK_l,              setmfact,       {.f = +0.05} },
+	{ MODKEY|ShiftMask,   XK_j,              movestack,      {.i = +1 } },
+	{ MODKEY|ShiftMask,   XK_k,              movestack,      {.i = -1 } },
 	{ MODKEY,             XK_z,              zoom,           {0} },			// move window to master
 	{ MODKEY,             XK_Tab,            view,           {0} },			// move back to last used tag
 	{ MODKEY,             XK_q,              killclient,     {0} },
@@ -91,7 +94,7 @@ static Key keys[] = {
 	{ MODKEY,             XK_w,              setlayout,      {.v = &layouts[2]} },	// monocle layout (windowed)
 	{ MODKEY,             XK_g,              setlayout,      {.v = &layouts[3] } },
 	// { MODKEY,           XK_space,          setlayout,      {0} },
-	{ ALTKEY,		          XK_space,          togglefloating, {0} },
+	{ ALTKEY,             XK_space,          togglefloating, {0} },
 	{ MODKEY,             XK_0,              view,           {.ui = ~0 } },		// show all tags
 	{ MODKEY|ShiftMask,   XK_0,              tag,            {.ui = ~0 } },		// pin window to all tags, use pin to specific tag to unpin from all
 	{ MODKEY,             XK_comma,          focusmon,       {.i = -1 } },		// focusmon is used to focus monitor
