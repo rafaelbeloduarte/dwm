@@ -40,6 +40,7 @@ static const Rule rules[] = {
 	{ NULL,            NULL,       "Friends List",   1 << 6,       1,             1,           -1 },
 	{ NULL,            NULL,       "BashTOP",        1 << 8,       0,             1,           -1 },
 	{ NULL,            NULL,       "mutt",           1 << 8,       0,             1,           -1 },
+	{ "Galculator",    NULL,       NULL,             1 << 8,       0,             1,           -1 },
 };
 
 /* layout(s) */
