@@ -123,7 +123,7 @@ static Key keys[] = {
 	{ MODKEY,             XK_F4,             spawn,          SHCMD("amixer set Master toggle")},
 	{ MODKEY,             XK_b,              spawn,          SHCMD("setxkbmap -layout br") },
 	{ MODKEY,             XK_u,              spawn,          SHCMD("setxkbmap -layout us") },
-	{ ALTKEY,             XK_l,              spawn,          SHCMD("sleep 1 && xset s activate && slock") },
+	{ ALTKEY,             XK_l,              spawn,          SHCMD("sleep 1 && xset dpms force off && slock") },
 	{ ALTKEY,             XK_e,              spawn,          SHCMD("keepassxc") },
 	{ ALTKEY,             XK_f,              spawn,          SHCMD("firefox") },
 	{ ALTKEY,             XK_b,              spawn,          SHCMD("qutebrowser") },
