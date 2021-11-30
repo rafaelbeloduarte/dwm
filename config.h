@@ -144,6 +144,7 @@ static Key keys[] = {
 	{ 0,                  XF86XK_AudioPrev,  spawn,          SHCMD("audacious -r")},
 	{ 0,                  XF86XK_AudioNext,  spawn,          SHCMD("audacious -f")},
 	{ ALTKEY|ShiftMask,   XK_f,              spawn,          SHCMD("chromium --proxy-server=\"proxy.uem.br:8080\"")},
+	{ 0,                  XK_Print,          spawn,          SHCMD("xfce4-screenshooter")},
 };
 
 /* button definitions */
