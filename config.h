@@ -140,7 +140,7 @@ static Key keys[] = {
 	{ ALTKEY,             XK_s,              spawn,          SHCMD("steam")},
 	{ ALTKEY,             XK_y,              spawn,          SHCMD("freetube")},
 	{ ALTKEY,             XK_p,              spawn,          SHCMD("nitrogen --set-zoom-fill --random ~/.local/share/backgrounds/")},
-	{ 0,                  XK_F7,             spawn,          SHCMD("audacious -t")},
+	{ 0,                  XF86XK_AudioPlay,  spawn,          SHCMD("audacious -t")},
 	{ 0,                  XF86XK_AudioPrev,  spawn,          SHCMD("audacious -r")},
 	{ 0,                  XF86XK_AudioNext,  spawn,          SHCMD("audacious -f")},
 	{ ALTKEY|ShiftMask,   XK_f,              spawn,          SHCMD("chromium --proxy-server=\"proxy.uem.br:8080\"")},
