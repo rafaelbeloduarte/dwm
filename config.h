@@ -1,6 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 #include <X11/XF86keysym.h>
 #include "gaplessgrid.c"
+#include "unfloat.c"
 
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
@@ -98,6 +99,8 @@ static Key keys[] = {
 	{ MODKEY,             XK_g,              setlayout,      {.v = &layouts[3] } },
 	// { MODKEY,           XK_space,          setlayout,      {0} },
 	{ ALTKEY,             XK_space,          togglefloating, {0} },
+  { ALTKEY|ShiftMask,   XK_space,          unfloatvisible, {0} },
+	{ MODKEY|ShiftMask,   XK_t,              unfloatvisible, {.v = &layouts[0]} },
 	{ MODKEY,             XK_0,              view,           {.ui = ~0 } },		// show all tags
 	{ MODKEY|ShiftMask,   XK_0,              tag,            {.ui = ~0 } },		// pin window to all tags, use pin to specific tag to unpin from all
 	{ MODKEY,             XK_comma,          focusmon,       {.i = -1 } },		// focusmon is used to focus monitor
