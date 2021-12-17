@@ -120,7 +120,7 @@ static Key keys[] = {
 	TAGKEYS(              XK_7,                              6)
 	TAGKEYS(              XK_8,                              7)
 	TAGKEYS(              XK_9,                              8)
-	{ MODKEY|ShiftMask,   XK_e,              quit,           {0} },
+	{ MODKEY|ShiftMask,   XK_End,            quit,           {0} },
 	{ 0,                  XK_F11,            spawn,          SHCMD("amixer set Master 5%+")},
 	{ 0,                  XK_F10,            spawn,          SHCMD("amixer set Master 5%-")},
 	{ ALTKEY,             XK_1,              spawn,          SHCMD("amixer set Master 15%")},
