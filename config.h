@@ -9,8 +9,8 @@ static const Gap default_gap        = {.isgap = 1, .realgap = 5, .gappx = 5};
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Libertinus Mono:size=14" };
-static const char dmenufont[]       = "Libertinus Mono:size=14";
+static const char *fonts[]          = { "Liberation Mono:size=14" };
+static const char dmenufont[]       = "Liberation Mono:size=14";
 static const char col_gray1[]       = "#2f343f";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
