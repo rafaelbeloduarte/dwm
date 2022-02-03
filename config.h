@@ -23,7 +23,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7" };
+static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -140,7 +140,6 @@ static Key keys[] = {
 	{ ControlMask,        XK_space,          spawn,          SHCMD("st -e ranger")},
 	{ ALTKEY,             XK_m,              spawn,          SHCMD("st -t BashTOP -e bashtop")},
 	{ ALTKEY,             XK_d,              spawn,          SHCMD("st -t mutt -e mutt")},
-	{ ALTKEY,             XK_s,              spawn,          SHCMD("steam")},
 	{ ALTKEY,             XK_y,              spawn,          SHCMD("freetube")},
 	{ ALTKEY,             XK_p,              spawn,          SHCMD("nitrogen --set-zoom-fill --random ~/.local/share/backgrounds/")},
 	{ 0,                  XF86XK_AudioPlay,  spawn,          SHCMD("audacious -t")},
