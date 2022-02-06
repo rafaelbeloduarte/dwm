@@ -39,7 +39,7 @@ static const Rule rules[] = {
 	{ "mpv",           NULL,       NULL,             1 << 9,       0,             1,           -1 },
 	{ "okular",        NULL,       NULL,             1 << 0,       1,             0,           -1 },
 	{ NULL,            NULL,       "Friends List",   1 << 6,       1,             1,           -1 },
-	{ NULL,            NULL,       "BashTOP",        1 << 9,       0,             1,           -1 },
+	{ NULL,            NULL,       "BTOP",           1 << 9,       0,             1,           -1 },
 	{ NULL,            NULL,       "mutt",           1 << 9,       0,             1,           -1 },
 	{ "Galculator",    NULL,       NULL,             1 << 9,       0,             1,           -1 },
 	{ "Pavucontrol",   NULL,       NULL,             1 << 9,       0,             1,           -1 },
@@ -74,7 +74,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "alacritty", NULL };
 
 #include "movestack.c"
 static Key keys[] = {
@@ -137,9 +137,9 @@ static Key keys[] = {
 	{ ALTKEY,             XK_b,              spawn,          SHCMD("qutebrowser") },
 	{ ALTKEY,             XK_c,              spawn,          SHCMD("google-chrome-stable") },
 	{ ALTKEY,             XK_a,              spawn,          SHCMD("pcmanfm")},
-	{ ControlMask,        XK_space,          spawn,          SHCMD("st -e ranger")},
-	{ ALTKEY,             XK_m,              spawn,          SHCMD("st -t BashTOP -e bashtop")},
-	{ ALTKEY,             XK_d,              spawn,          SHCMD("st -t mutt -e mutt")},
+	{ ControlMask,        XK_space,          spawn,          SHCMD("alacritty -e ranger")},
+	{ ALTKEY,             XK_m,              spawn,          SHCMD("alacritty -t BTOP -e btop")},
+	{ ALTKEY,             XK_d,              spawn,          SHCMD("alacritty -t mutt -e mutt")},
 	{ ALTKEY,             XK_y,              spawn,          SHCMD("freetube")},
 	{ ALTKEY,             XK_p,              spawn,          SHCMD("nitrogen --set-zoom-fill --random ~/.local/share/backgrounds/")},
 	{ 0,                  XF86XK_AudioPlay,  spawn,          SHCMD("audacious -t")},
