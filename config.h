@@ -56,6 +56,8 @@ static const Layout layouts[] = {
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
+	{ "|M|",      centeredmaster },
+	{ ">M>",      centeredfloatingmaster },
 	{ "###",      gaplessgrid },
 };
 
@@ -96,7 +98,9 @@ static Key keys[] = {
 	{ MODKEY,             XK_e,              setlayout,      {.v = &layouts[0]} },	// tiling layout
 	{ MODKEY|ShiftMask,   XK_f,              setlayout,      {.v = &layouts[1]} },	// floating layout
 	{ MODKEY,             XK_w,              setlayout,      {.v = &layouts[2]} },	// monocle layout (windowed)
-	{ MODKEY,             XK_g,              setlayout,      {.v = &layouts[3] } },
+	{ MODKEY,             XK_c,              setlayout,      {.v = &layouts[3]} },  // centered master
+	{ MODKEY,             XK_o,              setlayout,      {.v = &layouts[4]} },  // centered floating master
+	{ MODKEY,             XK_g,              setlayout,      {.v = &layouts[5]} },  // grid
 	// { MODKEY,           XK_space,          setlayout,      {0} },
 	{ ALTKEY,             XK_space,          togglefloating, {0} },
   { ALTKEY|ShiftMask,   XK_space,          unfloatvisible, {0} },
