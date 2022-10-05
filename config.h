@@ -37,13 +37,13 @@ static const Rule rules[] = {
 //	{ "Google-chrome", NULL,       NULL,             1 << 2,       1,             0,           -1 },
 	{ "Steam",         NULL,       NULL,             1 << 6,       0,             0,           -1 },
 	// { "mpv",           NULL,       NULL,             1 << 9,       0,             1,           -1 },
-	{ "okular",        NULL,       NULL,             1 << 0,       0,             0,           -1 },
+	{ "okular",        NULL,       NULL,             1 << 0,       1,             0,           -1 },
 	{ NULL,            NULL,       "Friends List",   1 << 6,       0,             1,           -1 },
 	{ NULL,            NULL,       "BTOP",           1 << 9,       0,             1,           -1 },
 	{ NULL,            NULL,       "mutt",           1 << 9,       0,             1,           -1 },
 	{ "Galculator",    NULL,       NULL,             1 << 9,       0,             1,           -1 },
 	{ "Pavucontrol",   NULL,       NULL,             1 << 9,       0,             1,           -1 },
-	{ "Zotero",        NULL,       NULL,             1 << 9,       0,             1,           -1 },
+	{ "Zotero",        NULL,       NULL,             1 << 8,       0,             1,           -1 },
 };
 
 /* layout(s) */
