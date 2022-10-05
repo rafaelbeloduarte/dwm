@@ -44,6 +44,7 @@ static const Rule rules[] = {
 	{ "Galculator",    NULL,       NULL,             1 << 9,       0,             1,           -1 },
 	{ "Pavucontrol",   NULL,       NULL,             1 << 9,       0,             1,           -1 },
 	{ "Zotero",        NULL,       NULL,             1 << 8,       0,             1,           -1 },
+	{ "Pcmanfm",       NULL,       NULL,             1 << 4,       1,             0,           -1 },
 };
 
 /* layout(s) */
