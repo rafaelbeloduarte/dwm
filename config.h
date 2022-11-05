@@ -141,7 +141,7 @@ static Key keys[] = {
 	{ MODKEY,             XK_u,              spawn,          SHCMD("setxkbmap -layout us") },
 	{ ALTKEY,             XK_l,              spawn,          SHCMD("sleep 1 && xset dpms force off && slock") },
 	{ ALTKEY,             XK_e,              spawn,          SHCMD("keepassxc") },
-	{ ALTKEY,             XK_f,              spawn,          SHCMD("firefox") },
+	{ ALTKEY,             XK_f,              spawn,          SHCMD("TZ=UTC firefox") },
 	{ ALTKEY,             XK_w,              spawn,          SHCMD("chromium") },
 	{ ALTKEY,             XK_b,              spawn,          SHCMD("qutebrowser") },
 	{ ALTKEY,             XK_c,              spawn,          SHCMD("google-chrome-stable") },
