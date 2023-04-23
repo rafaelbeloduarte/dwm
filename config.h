@@ -130,6 +130,8 @@ static Key keys[] = {
 	TAGKEYS(              XK_8,                              7)
 	TAGKEYS(              XK_9,                              8)
 	{ MODKEY|ShiftMask,   XK_End,            quit,           {0} },
+	{ MODKEY|ShiftMask,   XK_h,              spawn,          SHCMD("xrandr --output DVI-D-0 --mode 1920x1080")},
+	{ MODKEY|ShiftMask,   XK_l,              spawn,          SHCMD("xrandr --output DVI-D-0 --mode 1280x720")},
 	{ 0,                  XK_F11,            spawn,          SHCMD("amixer set Master 5%+")},
 	{ 0,                  XK_F10,            spawn,          SHCMD("amixer set Master 5%-")},
 	{ ALTKEY,             XK_1,              spawn,          SHCMD("amixer set Master 15%")},
